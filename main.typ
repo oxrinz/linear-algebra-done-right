@@ -8,7 +8,7 @@
 
 #set page(height: auto)
 
-= Notes
+= Section 1.A
 
 Verify that $i^2 = -1$.
 
@@ -28,8 +28,7 @@ Complex number division is defined by
 $ beta / alpha = beta (1 / alpha) $
 Where $alpha, beta in CC$
 
-= Exercises
-== 1.A
+== Exercises
 1. Suppose $a$ and $b$ are real numbers, not both 0. Find real numbers $c$ and $d$ such that $ 1 / (a + b i) = c + d i. $
 
 #solution[
@@ -369,4 +368,124 @@ $ lambda (2 - 3 i, 5 + 4 i, -6 + 7 i) = (12 - 5 i, 7 + 22 i, -32 - 9 i). $
   Since scalars satisfy the distributive property, $(a + b) x_j = a x_j + b x_j$.
 
   We can then conclude that since addition and multiplication is an elementwise operation, $(a + b) x = a x + b x$.
+]
+
+
+= Section 1.B
+== Exercises
+1. Prove that $-(-v) = v$ for every $v in VV$.
+
+#solution[
+  By definition of additive inverse v $-(-v) = -1(-1 v)$.
+
+  By associativity $-1(-1 v) = (-1 dot -1) v = v$.
+
+  Therefore $-(-v) = v$.
+]
+
+2. Suppose $a in FF, v in VV$ and $a v = 0$. Prove that $a = 0$ or $v = 0$.
+
+#solution[
+  Assume $a eq.not 0$.
+
+  The equation we're working with is
+  $ a v = 0 $
+
+  We can multiply both sides by $a^(-1)$
+
+  $
+    a^(-1) (a v) & = a^(-1) 0 \
+    (a^(-1) a) v & = 0 \
+             1 v & = 0 \
+               v & = 0
+  $
+]
+
+3. Suppose $v, w in VV$. Explain why there exists a unique $x in VV$ such that $v + 3 x = w$.
+
+#solution[
+  We first solve for $x$
+  $
+    v + 3x & = w \
+        3x & = w - v \
+         x & = w / 3 - v / 3 \
+         x & = (w - v) / 3
+  $
+
+  Plugging $x$ back in allows us to solve the problem
+  $
+    v + 3x & = v + 3 (1/3)(w - v) \
+           & = v + (w - v) \
+           & = w.
+  $
+
+  That solves existence, now onto uniqueness.
+
+  Suppose $x_1$ and $x_2$ are the solutions to $v + 3 x = w$.
+
+  The following equation must then be true
+  $ v + 3 x_1 = v + 3 x_2 $
+
+  Subtracing both sides by $v$ and dividing the result by 3 gives us
+  $ x_1 = x_2 $
+]
+
+4. The empty set is nto a vector space. The empty set fails to satisfy only one of the requirements listed in 1.19. Which one?
+
+#solution[
+  The definition of vector space states the following requirements:
+  - commutativity
+  - associativity
+  - additive identity
+  - additive inverse
+  - multiplicative identity
+  - distributive properties
+
+  The definition of additive identity states that there exists $0 in VV$ such that $v + 0 = v$ for all $v in VV$ and all $a, b in FF$.
+
+  Since the empty set does not have any elements, including $0$, the empty set doesn't satisfy the requirements of a vector space.
+]
+
+5. Show that in the definition of a vector space (1.19), the additive inverse condition can be replaced with the condition that $0 v = 0$ for all $v in VV$. Here the $0$ on the left side is the number $0$, and the $0$ on the right side is the additive identity of $VV$.
+
+#solution[
+  The goal is to prove that $0 v = 0$ is the same as $v + w = 0$.
+
+  The definition of $w$ is $-v$, we can use this knowledge to rewrite the additive inverse equation like so
+  $ v + (- v) = 0 $
+
+  It simplifies into
+  $ 0 = 0 $
+
+  Add $v$ back
+  $ 0 v = 0 $
+]
+
+6. Let $infinity$ and $- infinity$ denote two distinct objects, neither of which is in $RR$. Define an addition and scalar multiplication on $RR union {infinity} union {-infinity}$ as you could guess from the notation. Specifically, the sum and product of two real numbers is as usual, and for $t in RR$ define
+$
+  t infinity = cases(
+    -infinity & "if " t < 0,
+    0 & "if " t = 0,
+    infinity & "if " t > 0
+  )
+  wide
+  t(-infinity) = cases(
+    infinity & "if " t < 0,
+    0 & "if " t = 0,
+    -infinity & "if " t > 0
+  ) \
+  t + infinity = infinity + t = infinity \
+  t + (- infinity) = (- infinity) + t = - infinity \
+  infinity + infinity = infinity \
+  (- infinity) + (- infinity) = - infinity \
+  infinity + (- infinity) = 0
+$
+
+Is $RR union {infinity} union {- infinity}$ a vector space over $RR$? Explain.
+
+#solution[
+  The union is not a vector space.
+
+  An example is $(infinity + infinity) + (- infinity)$ vs $infinity + (infinity + (- infinity))$.
+  The first expression evaluates $0$ while the second one evaluates $infinity$. Associativity, which is a prerequisite to a vector space fails, therefore the union is not a vector space.
 ]
